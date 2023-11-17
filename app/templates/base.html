@@ -1,0 +1,29 @@
+<html>
+    <head>
+        {% if title %}
+        <title>
+            {{ title }} - vgexcel
+        </title>
+        {% else %}
+        <title>
+            vgexcel
+        </title>
+        {% endif %}
+    </head>
+    <body>
+        <div>
+            Links: 
+            <a href="{{url_for('index')}}">Home</a>
+            <a href="{{url_for('post_list')}}">Posts</a>
+            {% if current_user.is_anonymous %}
+            <a href="{{url_for('login')}}">Log in</a>
+            {% else %}
+            <a href="{{ url_for('add_post') }}">Add Post</a>
+            <a href="{{url_for('logout')}}">Log out</a>
+            {% endif %}
+        </div>
+        <hr>
+
+{% block content %}{% endblock %}
+    </body>
+</html>
